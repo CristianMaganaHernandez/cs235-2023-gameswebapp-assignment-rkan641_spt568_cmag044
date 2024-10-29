@@ -1,0 +1,147 @@
+#search-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  text-align: center;
+}
+#search-container h1 {
+  margin-top: 1em;
+  font-weight: bold;
+}
+#search-container form label, #search-container form input, #search-container form select, #search-container form button {
+  width: 50%;
+  margin: 0.5em 0;
+  display: block;
+}
+#search-container form input[type=text], #search-container form select {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+#search-container form #search-and-filter {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 2em;
+}
+#search-container form #price-filter-options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 10px;
+}
+#search-container form #price-filter-options div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+#search-container form #price-filter-options div label {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#search-container form #search {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  height: 75px;
+}
+#search-container form #search button {
+  background-color: #e74c3c;
+  color: #ffffff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+@media (prefers-color-scheme: dark) {
+  #search-container form #search button {
+    background-color: #e74c3c;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  #search-container form #search button {
+    color: #ffffff;
+  }
+}
+#search-container form #search button:hover {
+  background-color: #c0392b;
+}
+
+#search-results {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+#search-results #search-query {
+  width: 80%;
+  align-self: start;
+  margin-bottom: 20px;
+  margin-left: 10%;
+}
+#search-results .search-results-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 90px;
+  background-color: #b7b7f6;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+@media (prefers-color-scheme: dark) {
+  #search-results .search-results-container {
+    background-color: #1b1b5b;
+  }
+}
+#search-results .search-results-container span {
+  color: #15171c;
+}
+@media (prefers-color-scheme: dark) {
+  #search-results .search-results-container span {
+    color: #8c97d0;
+  }
+}
+#search-results .search-results-container .game-img {
+  width: 160px;
+}
+#search-results .search-results-container .game-img img {
+  width: 100%;
+  height: auto;
+}
+#search-results .search-results-container .game-title {
+  width: 40%;
+}
+#search-results .search-results-container .game-title a {
+  margin-left: 15px;
+}
+#search-results .search-results-container .game-release {
+  width: 15%;
+}
+#search-results .search-results-container .game-publisher {
+  width: 20%;
+}
+#search-results .search-results-container .game-price {
+  width: 15%;
+}
+#search-results #no-result {
+  color: #15171c;
+  margin-bottom: 50px;
+}
+@media (prefers-color-scheme: dark) {
+  #search-results #no-result {
+    color: #8c97d0;
+  }
+}
+
+/*# sourceMappingURL=search.css.map */

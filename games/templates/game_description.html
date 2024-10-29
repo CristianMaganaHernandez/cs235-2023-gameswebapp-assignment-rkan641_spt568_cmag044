@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/game_description.css') }}">
+    <div id="game-description-and-reviews">
+        <div id="game-description">
+            <div id="game-description-container">
+                <h1>{{ game.title }}</h1>
+                <div id="img-and-info">
+                    <div id="image">
+                        <img src="{{ game.image_url }}" alt="game image"/>
+                    </div>
+                    <div id="info-container">
+                        <div id="info">
+                            <p><strong>Release Date:</strong>&nbsp;{{ game.release_date }} </p>
+                            <p><strong>Publisher(s):</strong>&nbsp;{{ game.publisher.publisher_name }}</p>
+                            {% if game.price == 0 %}
+                                <p><strong>Price:</strong>&nbsp;Free</p>
+                            {% else %}
+                                <p><strong>Price:</strong>&nbsp;${{ game.price }} USD</p>
+                            {% endif %}
+                            <p>
+                                <strong>Genre(s):</strong>
+                                {% for genre in game.genres %}
+                                    {% if genre == game.genres[-1] %}
+                                        <a href="{{ url_for("games_bp.browse_games", page=1, browse_genre=genre.genre_name ) }}">{{ genre.genre_name }}</a>
+                                    {% else %}
+                                        <a href="{{ url_for("games_bp.browse_games", page=1, browse_genre=genre.genre_name ) }}">{{ genre.genre_name }},</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <div id="add-wish-fav">
+                        <div class="button-group">
+                            <div id="wish">
+                                <form method="POST" action="{{ url_for('wishlist_bp.add_to_wishlist_route', game_id=game.game_id) }}">
+                                    <input type="hidden" name="game_id" value="{{ game.game_id }}">
+                                    <input type="hidden" name="game_title" value="{{ game.title }}">
+                                    <input type="hidden" name="publisher_name" value="{{ game.publisher.publisher_name }}">
+                                    <input type="hidden" name="release_date" value="{{ game.release_date }}">
+                                    <input type="hidden" name="price" value="{{ game.price }}">
+                                    <input type="hidden" name="image_url" value="{{ game.image_url }}">
+                                    <div class="button-pair">
+                                        <button type="submit" class="add-to-wishlist-button">Add to Wishlist</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="favs">
+                                <form method="POST"
+                                      action="{{ url_for('wishlist_bp.remove_from_wishlist_route', game_id=game.game_id) }}">
+                                    <input type="hidden" name="game_id" value="{{ game.game_id }}">
+                                    <button type="submit" class="remove-from-wishlist-button">Remove from Wishlist</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="button-pair">
+                            <div>
+                                <form method="POST"
+                                      action="{{ url_for('favorite_games_bp.add_to_favorite_route', game_id=game.game_id) }}">
+                                    <input type="hidden" name="game_id" value="{{ game.game_id }}">
+                                    <button type="submit" class="add-to-favorite-button">Add to Favorites</button>
+                                </form>
+                            </div>
+                            <div>
+                                <form method="POST"
+                                      action="{{ url_for('favorite_games_bp.remove_from_favorite_route', game_id=game.game_id) }}">
+                                    <input type="hidden" name="game_id" value="{{ game.game_id }}">
+                                    <button type="submit" class="remove-from-favorite-button">Remove from Favorites</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="description">
+                    <h3>ABOUT THIS GAME</h3>
+                    <p> {{ game.description }} </p>
+                </div>
+            </div>
+        </div>
+        <div id="average-rating">
+            <h3>Average Rating</h3>
+            <p id="rating_score">{{ average_rating }}</p>
+        </div>
+        <div id="reviews-container">
+            <div id="reviews-rev">
+                <form method="POST"
+                      action="{{ url_for('game_description_bp.submit_review', game_id=game.game_id, game_title=game.title) }}">
+                    <div id="reviews-rev-container" class="form-group">
+                        <div id="reviews-comment">
+                            <label for="comment" style="font-size: x-large; font-weight: bold;">Comment</label>
+                            <div class="center-vertically">
+                                <textarea name="comment" id="comment" rows="4" cols="50"></textarea>
+                            </div>
+                        </div>
+                        <div id="reviews-rating" class="center-vertically">
+                            <label for="rating" style="font-size: x-large; font-weight: bold;">Rate</label>
+                            <select name="rating" id="rating">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            </div>
+            <div id="reviews">
+                <h3>Reviews</h3>
+                <div class="review-cards">
+                    {% if game.reviews %}
+                        {% for review in game.reviews|sort(reverse=True, attribute='timestamp') %}
+                            <div class="review-card">
+                                <div id="review-name">
+                                    <p><strong>{{ review.user.username }}</strong></p><br>
+                                </div>
+                                <div id="review-other">
+                                    <div id="review-info">
+                                        <p>Rating: {{ review.rating }}/5</p><br>
+                                        <p>Posted: {{ review._Review__timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                                    </div>
+                                    <div id="review-comment">
+                                        <p>{{ review.comment }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No reviews available for this game.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

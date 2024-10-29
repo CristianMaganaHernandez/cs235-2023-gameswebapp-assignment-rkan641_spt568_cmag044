@@ -1,0 +1,21 @@
+
+<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/component_css/navbar.css") }}">
+<aside>
+    <div id="nav-container">
+        <div id="nav-link">
+            <a href="{{ url_for('home_bp.home') }}">Home</a>
+            <a href="{{ url_for('search_bp.search_games') }}">Search</a>
+            {#  add route.default later  #}
+            <a href="{{ url_for('games_bp.browse_games', browse_genre="All") }}">Games</a>
+            <a href="{{ url_for('wishlist_bp.user_wishlist_route') }}">Wishlist</a>
+        </div>
+        <div id="auth">
+            {% if current_user == None %}
+                <a class="nav-button" href="{{ url_for('auth_bp.user_login') }}">Sign In</a>
+            {% else %}
+                <a id="nav-profile" href="{{ url_for('profile_bp.user_profile', user_name=current_user) }}">{{ current_user }}</a>
+                <a class="nav-button" href="{{ url_for('auth_bp.user_logout') }}">logout</a>
+            {% endif %}
+        </div>
+    </div>
+</aside>

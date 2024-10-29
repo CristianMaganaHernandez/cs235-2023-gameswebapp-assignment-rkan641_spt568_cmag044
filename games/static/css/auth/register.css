@@ -1,0 +1,24 @@
+#auth-register {
+  height: 800px;
+}
+#auth-reg-username-error ul {
+  list-style-type: none;
+}
+#auth-register #register-title {
+  height: 10%;
+}
+#auth-register #register-main {
+  height: 80%;
+}
+#auth-register .register-items {
+  height: 24%;
+}
+#auth-register .register-sub {
+  height: 10%;
+  width: 400px;
+}
+#auth-register .register-sub input[type=submit] {
+  width: 80%;
+}
+
+/*# sourceMappingURL=register.css.map */

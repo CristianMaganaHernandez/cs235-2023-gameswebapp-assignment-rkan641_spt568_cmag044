@@ -1,0 +1,38 @@
+#auth-sign-in {
+  height: 600px;
+}
+
+
+#auth-sign-in-username-error {
+  /*margin-bottom: 3px;*/
+}
+#auth-sign-in #sign-in-title {
+  height: 15%;
+}
+#auth-sign-in #sign-in-main {
+  height: 80%;
+}
+#auth-sign-in .sign-in-items {
+  height: 27.5%;
+}
+#auth-sign-in .sign-in-items div {
+  /*width: 100%;*/
+  /*margin-top: 15px;*/
+  text-align: left;
+}
+#auth-sign-in .sign-in-items div a {
+  color: #c0392b;
+}
+#auth-sign-in .sign-in-sub {
+  width: 400px;
+  height: 25%;
+  justify-content: space-between;
+}
+#auth-sign-in .sign-in-sub a {
+  font-size: 1.1rem;
+}
+#auth-sign-in .sign-in-sub input[type=submit] {
+  width: 40%;
+}
+
+/*# sourceMappingURL=login.css.map */

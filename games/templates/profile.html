@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/profile.css") }}">
+    <div id="profile">
+        <div id="profile-container">
+            <div id="profile-user-gen">
+                <div id="profile-pic" class="profile-container-bg">
+                    <h3>Profile Pic</h3>
+                    <div id="profile_pic" class="profile-container-bg">
+    <img src="{{ url_for('static', filename='spongy.png') }}" alt="Profile Picture">
+</div>
+                </div>
+                <div id="profile-info" class="profile-container-bg">
+                    <h3>User Info</h3>
+                    <p>Hello, my name is {{ username }}.</p>
+                <p>I have {{ fav_games_length }} favorite game/s in my list that I hope you guys get a chance to play one day.</p>
+                <p>I also have {{ wishlist_length }} game/s in my wishlist that I hope to play in the future.</p>
+                <p>I can't wait for you guys to try out my recommendations and see my thoughts with the reviews I've made.</p>
+
+                </div>
+            </div>
+            <div id="profile-fav-games" class="profile-container-bg">
+    <h3>Favourite games</h3>
+    <ul>
+        {% for game in favorite_games %}
+            <li>
+                <a href="{{ url_for('game_description_bp.game_description', game_id=game.game_id, game_title=game.title) }}">
+                    {{ game.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+            <div id="profile-rev-wish">
+                <div id="profile-reviews" class="profile-container-bg">
+    <h3>Reviews/Ratings</h3>
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <a href="{{ url_for('game_description_bp.game_description', game_id=review.game.game_id, game_title=review.game.title) }}">
+                    {{ review.game.title }}
+                </a>
+                | <em>Rating</em> = {{ review.rating }} | <em>Comment</em> = {{ review.comment }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+                <div id="profile-wishlist" class="profile-container-bg">
+                <h3><a href="{{ url_for('wishlist_bp.user_wishlist_route') }}">Wishlist</a></h3>
+                <ul>
+                    {% for game in wishlist %}
+                        <li>
+                            <a href="{{ url_for('game_description_bp.game_description', game_id=game.game_id, game_title=game.title) }}">
+                                {{ game.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

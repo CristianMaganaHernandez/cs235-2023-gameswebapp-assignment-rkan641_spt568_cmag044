@@ -1,0 +1,19 @@
+# Don't push this file and remove comments
+
+.coverage
+.idea
+.pytest_cache
+.vscode
+__pycache__
+htmlcov
+venv
+*.db
+*.egg-info
+.DS_Store
+
+
+1000
+/**/**/*.map
+
+#Uncomment below to ignore .scss files when merging to main
+#/**/**/*.scss

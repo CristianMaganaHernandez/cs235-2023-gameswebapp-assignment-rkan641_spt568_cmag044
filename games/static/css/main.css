@@ -1,0 +1,46 @@
+body {
+  padding: 0;
+  margin: 0;
+  z-index: 0;
+  line-height: 1.2;
+  background-color: white;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #190536;
+  }
+}
+
+p, li, label, td {
+  color: #15171c;
+  font-family: "Gill Sans", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  p, li, label, td {
+    color: #8c97d0;
+  }
+}
+
+h1, h2, h3 {
+  font-family: "Times New Roman", serif;
+}
+
+h1 {
+  color: #5d70ce;
+}
+@media (prefers-color-scheme: dark) {
+  h1 {
+    color: #24f399;
+  }
+}
+
+h2, h3 {
+  color: #354ba8;
+}
+@media (prefers-color-scheme: dark) {
+  h2, h3 {
+    color: #55c577;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/component_css/genre_sidebar.css") }}">
+<aside>
+    <div id="genre_sidebar">
+        <p>Browse by Genre</p>
+        <a href="{{ url_for("games_bp.browse_games", browse_genre="All") }}">All</a>
+        {% for genre in genres %}
+            {# replace function for clearner urls  #}
+            <a href="{{ url_for("games_bp.browse_games", browse_genre=genre.replace(" ", "_")) }}">{{ genre }}</a>
+        {% endfor %}
+        <br>
+    </div>
+</aside>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS235 Game Library</title>
+
+    {# Bootstrap styles and other preconfigured third-party style placed here so we can override them #}
+
+    {# Currently boostrap affect header height?, pagination, headings #}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    {# Our styles #}
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/component_css/header.css") }}">
+</head>
+<body>
+    {% include "component_ui/header.html" %}
+    {# authentication pages replace this #}
+    {% block auth %}
+        {% include "component_ui/navbar.html" %}
+        <div class="content">
+            <div>
+                {# this is content block for all pages #}
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

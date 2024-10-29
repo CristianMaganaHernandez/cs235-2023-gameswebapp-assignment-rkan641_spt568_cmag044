@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block auth %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/auth/auth.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/auth/login.css") }}">
+    <div id="auth-errors-not">
+        {% if form.username.errors or user_name_error_message is not none %}
+            <div class="auth-error-notification">
+                <div class="auth-e-b"><button class="auth-notification-remove">X</button></div>
+                <div class="auth-e-c">
+                    {% if user_name_error_message is not none %}
+                        <p>
+                            {{ user_name_error_message }}
+                        </p>
+                    {% endif %}
+                    <ul>
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        {% if form.password.errors or password_error_message is not none %}
+            <div class="auth-error-notification">
+                <div class="auth-e-b"><button class="auth-notification-remove">X</button></div>
+                <div class="auth-e-c">
+                    {% if password_error_message is not none %}
+                        <p>
+                            {{ password_error_message }}
+                        </p>
+                    {% endif %}
+                    <ul>
+                        {% for error in form.password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <script>
+            const notifications = document.getElementsByClassName("auth-notification-remove");
+
+            const hideNotification = e => {
+                e.target.parentElement.parentElement.remove();
+            }
+
+            for (let n of notifications) {
+                n.addEventListener("click", hideNotification)
+            }
+        </script>
+    </div>
+    <div class="auth">
+        <div class="auth-container" id="auth-sign-in">
+            <div class="auth-title" id="sign-in-title">
+                <h1>Sign In</h1>
+            </div>
+            <div class="auth-main" id="sign-in-main">
+                <form method="POST">
+                    {{ form.csrf_token }}
+                    <div class="auth-items sign-in-items">
+                        <div class="auth-error auth-error-left" id="auth-sign-in-username-error">
+                        </div>
+                        <div class="auth-content">
+                            <label>Username:</label><br>
+                            {{ form.username }}
+                        </div>
+                        <div class="auth-error"></div>
+                    </div>
+                    <div class="auth-items sign-in-items">
+                        <div class="auth-error"></div>
+                        <div class="auth-content">
+                            <label>Password:</label><br>
+                            {{ form.password }}
+                        </div>
+                        <div class="auth-error auth-error-right" id="auth-sign-in-password-error">
+                        </div>
+                    </div>
+                    <div class="auth-sub sign-in-sub">
+                        <a href="{{ url_for('auth_bp.user_register') }}">Create an account</a>
+                        {{ form.submit }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/home.css") }}">
+    <div id="home">
+        <div id="home-container">
+            <div class="intro">
+                <div>
+                    <h1>Welcome to the CS235 Game Library</h1>
+                    <div>
+                        <p>We are a team of three university students working on a game library website for our university course CS235 and our objective being to design and implement a Flask web application that allows users to interact with a collection of games. This being achieved through various objectives to enhance our learning about website development, some of these objectives include the use of blueprints and having good project structure and conformance.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="about-us" class="lifted-container">
+                <h2>About Us</h2>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="CS235 Game Library Logo" width="300">
+                </div>
+                <div class="about-us-text">
+                    <p>We are a team of three enthusiastic university students passionate about Computer Science and enriching our knowledge. <br><br>Our team consists of 3 members:</p>
+                    <ul class="team-list">
+                        <li>
+                            <strong>Sagar Patel</strong>
+                            <br>
+                            <br>Sagar is a dedicated Computer Science student with a keen interest in web development and programming languages.
+                            <br><br>
+                        </li>
+                        <li>
+                            <strong>Renesh</strong>
+                            <br>
+                            <br>Renesh is an aspiring software engineer who enjoys problem-solving and creating innovative solutions.
+                            <br><br>
+                        </li>
+                        <li>
+                            <strong>Cristian</strong>
+                            <br>
+                            <br>Cristian is a curious learner who loves exploring new technologies and applying them to real-world projects.
+                            <br>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="featured-game">
+                <h2>Featured Game for You</h2>
+                {% if game %}
+                <div class="game lifted-container">
+                    <h3><a href="{{ url_for('game_description_bp.game_description', game_id=game.game_id, game_title= (game.title).replace('/','')) }}">{{game.title}}</a></h3>
+                    <img class="game-image" src="{{ game.image_url }}" alt="game image" width="300">
+                    <p>{{ game.description }}</p>
+                </div>
+                {% else %}
+                <p>No featured game available at the moment. Check back later!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

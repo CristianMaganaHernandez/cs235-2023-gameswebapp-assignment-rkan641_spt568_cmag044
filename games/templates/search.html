@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/search.css") }}">
+<div>
+    <div id="search-container">
+        <h1>Search</h1>
+        <div>
+            <form method="POST" action="/search">
+                <div id="search-and-filter">
+                    <label for="search_query">Search:</label>
+                    <input type="text" id="search_query" name="search_query" required>
+                    <label for="filter">Filter by:</label>
+                    <select id="filter" name="filter">
+                        <option value="Title">Title</option>
+                        <option value="Genre">Genre</option>
+                        <option value="Publisher">Publisher</option>
+                        <option value="Release Year">Release Year</option>
+                    </select>
+                </div>
+                <div id="price-filter-options">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="price_filter" value="0-15">
+                            $0 - $15
+                        </label>
+                        <label>
+                            <input type="checkbox" name="price_filter" value="16-30">
+                            $16 - $30
+                        </label>
+                        <label>
+                            <input type="checkbox" name="price_filter" value="31-50">
+                            $31 - $50
+                        </label>
+                        <label>
+                            <input type="checkbox" name="price_filter" value="51-75">
+                            $51 - $75
+                        </label>
+                        <label>
+                            <input type="checkbox" name="price_filter" value="76-100">
+                            $76 - $100
+                        </label>
+                        <label>
+                            <input type="checkbox" name="price_filter" value="101-99999999999999">
+                            $100+
+                        </label>
+                    </div>
+                </div>
+                <div id="search">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="search-results">
+        {% if search_query %}
+            <div id="search-query">
+                <h3>"{{ search_query }}"</h3>
+            </div>
+        {% endif %}
+        {% if search_results %}
+            {% for game in search_results %}
+                <div class="search-results-container">
+                    <div class="game-img">
+                        <img src="{{ game.image_url }}" alt="game image"/>
+                    </div>
+                    <div class="game-title">
+                        <a href="{{ url_for('game_description_bp.game_description', game_id=game.game_id, game_title=(game.title).replace('/','')) }}">{{ game.title }}</a>
+                    </div>
+                    <div class="game-release">
+                        <span>{{ game.release_date }}</span>
+                    </div>
+                    <div class="game-publisher">
+                        <span>{{ game.publisher.publisher_name }}</span>
+                    </div>
+                    <div class="game-price">
+                        {% if game.price == 0 %}
+                            <span>Free</span>
+                        {% else %}
+                            <span>${{ game.price }} USD</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% if request.method == 'POST' %}
+                <h2 id="no-result">No results found.</h2>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

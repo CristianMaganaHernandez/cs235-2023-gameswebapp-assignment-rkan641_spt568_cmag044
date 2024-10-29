@@ -1,0 +1,156 @@
+
+.auth-errors-not {
+  float: right;
+}
+
+.auth-error-notification {
+  position: absolute;
+  right: 0;
+  margin-right: 30px;
+  margin-top: 20px;
+  height: fit-content;
+  width: 300px;
+  border: 2px solid red;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-e-b {
+  display: flex;
+  justify-content: right;
+}
+
+.auth-e-b button {
+  background: none;
+  border: none;
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  .auth-e-b button {
+    color: white;
+  }
+
+}
+
+.auth-e-c {
+  padding: 10px;
+}
+
+/*.auth-e-c ul {*/
+/*  list-style-type: none;*/
+/*}*/
+
+
+.auth {
+  height: calc(100vh - 150px);
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  width: 1200px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-content {
+  width: 400px;
+}
+
+
+.auth-error {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.auth-error ul {
+  list-style-type: none;
+}
+
+.auth-error-left {
+  margin-top: 33px;
+  margin-bottom: 41px;
+  /*margin-right: 20px;*/
+}
+
+.auth-error-right {
+  margin-top: 34px;
+  margin-bottom: 41px;
+  /*margin-left: 20px;*/
+}
+
+.auth-container .auth-main form .auth-items {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.auth-container .auth-title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container .auth-main form {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container .auth-main form .auth-items {
+  width: 100%;
+  /*display: flex;*/
+  /*flex-flow: row nowrap;*/
+}
+.auth-container .auth-main form .auth-items label {
+  text-align: left;
+  font-size: 1.3em;
+}
+.auth-container .auth-main form .auth-items input {
+  height: 50px;
+  width: 100%;
+}
+.auth-container .auth-main form .auth-sub {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.auth-container .auth-main form .auth-sub input[type=submit] {
+  height: 50px;
+  border: 0;
+  color: #007bff;
+  background-color: #f5f5f5;
+}
+@media (prefers-color-scheme: dark) {
+  .auth-container .auth-main form .auth-sub input[type=submit] {
+    color: #007bff;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .auth-container .auth-main form .auth-sub input[type=submit] {
+    background-color: white;
+  }
+}
+.auth-container .auth-main form .auth-sub input[type=submit]:hover {
+  border: 2px solid;
+  border-color: #007bff;
+}
+@media (prefers-color-scheme: dark) {
+  .auth-container .auth-main form .auth-sub input[type=submit]:hover {
+    border-color: #007bff;
+  }
+}
+
+/*# sourceMappingURL=auth.css.map */

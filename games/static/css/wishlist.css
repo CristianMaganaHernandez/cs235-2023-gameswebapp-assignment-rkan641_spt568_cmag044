@@ -1,0 +1,26 @@
+.light-red {
+    background-color: #b7b7f6;
+}
+.light-green {
+    background-color: #CCFFCC;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #190536;
+    }
+
+    .light-red {
+        background-color: #242454;
+    }
+}
+
+.empty-wishlist-message {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 50px;
+}
